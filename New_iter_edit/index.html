@@ -126,9 +126,9 @@
   <main>
 
     <!-- ============== HERO ============== -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <section class="relative min-h-screen flex items-center overflow-hidden">
       <!-- Background canvas (full-section, behind content) -->
-      <canvas id="bg-canvas" class="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true"></canvas>
+      <canvas id="bg-canvas" class="absolute inset-0 w-full h-full pointer-events-none intro-canvas" aria-hidden="true"></canvas>
 
       <!-- Gradient overlay for readability -->
       <div class="absolute inset-0 bg-gradient-to-b from-bg-0/40 via-transparent to-bg-0 pointer-events-none" aria-hidden="true"></div>
@@ -139,7 +139,7 @@
       <div class="hud-bracket hud-bl" aria-hidden="true"></div>
       <div class="hud-bracket hud-br" aria-hidden="true"></div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-8 items-center py-12">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-8 items-center py-12 intro-hero-content">
 
         <!-- Text content centered -->
         <div class="lg:col-span-12 flex flex-col items-center space-y-6 text-center">
@@ -179,7 +179,7 @@
       </div>
 
       <!-- Scroll indicator -->
-      <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+      <a href="#about" class="scroll-indicator intro-hero-content" aria-label="Scroll down">
         <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
         <span class="font-mono text-[10px] tracking-[0.3em] text-neon-cyan uppercase mt-3">Scroll</span>
       </a>

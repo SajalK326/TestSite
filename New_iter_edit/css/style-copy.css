@@ -136,6 +136,9 @@ body {
   border-radius: 0;
   border: 1px solid transparent;
   border-bottom-color: var(--border-cy);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
 }
 
 .glass-nav.nav-scrolled {
@@ -146,6 +149,9 @@ body {
   box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 15px rgba(255, 90, 31, 0.15);
   background: rgba(11, 10, 10, 0.85);
   padding: 0 1rem;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 @media (max-width: 1312px) {
@@ -307,11 +313,11 @@ body {
   pointer-events: none;
   z-index: 5;
 }
-.hud-tl { top: 80px; left: 24px; border-right: none; border-bottom: none; }
-.hud-tr { top: 80px; right: 24px; border-left: none; border-bottom: none; }
+.hud-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
+.hud-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
 .hud-bl { bottom: 24px; left: 24px; border-right: none; border-top: none; }
 .hud-br { bottom: 24px; right: 24px; border-left: none; border-top: none; }
-@media (max-width: 768px) { .hud-bracket { width: 24px; height: 24px; } .hud-tl, .hud-tr { top: 72px; } }
+@media (max-width: 768px) { .hud-bracket { width: 24px; height: 24px; } }
 
 .hud-ring {
   border: 1px dashed var(--neon-cyan);
@@ -825,6 +831,49 @@ body.cursor-hover #cursor-dot { background: var(--neon-magenta); }
 [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ========== INTRO ANIMATION ========== */
+.intro-canvas {
+  animation: canvas-fade-in 2s ease-out 0.5s both;
+}
+@keyframes canvas-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.intro-hero-content {
+  animation: hero-fade-in 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s both;
+}
+@keyframes hero-fade-in {
+  0% { opacity: 0; transform: scale(0.98) translateY(20px); filter: blur(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+.hud-tl { animation: intro-hud-tl 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.hud-tr { animation: intro-hud-tr 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.hud-bl { animation: intro-hud-bl 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.hud-br { animation: intro-hud-br 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@keyframes intro-hud-tl {
+  0% { top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; }
+  15% { top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1; }
+  100% { top: 24px; left: 24px; transform: translate(0, 0); opacity: 0.5; }
+}
+@keyframes intro-hud-tr {
+  0% { top: 50%; right: 50%; transform: translate(50%, -50%); opacity: 0; }
+  15% { top: 50%; right: 50%; transform: translate(50%, -50%); opacity: 1; }
+  100% { top: 24px; right: 24px; transform: translate(0, 0); opacity: 0.5; }
+}
+@keyframes intro-hud-bl {
+  0% { bottom: 50%; left: 50%; transform: translate(-50%, 50%); opacity: 0; }
+  15% { bottom: 50%; left: 50%; transform: translate(-50%, 50%); opacity: 1; }
+  100% { bottom: 24px; left: 24px; transform: translate(0, 0); opacity: 0.5; }
+}
+@keyframes intro-hud-br {
+  0% { bottom: 50%; right: 50%; transform: translate(50%, 50%); opacity: 0; }
+  15% { bottom: 50%; right: 50%; transform: translate(50%, 50%); opacity: 1; }
+  100% { bottom: 24px; right: 24px; transform: translate(0, 0); opacity: 0.5; }
 }
 
 /* ========== RESPONSIVE TWEAKS ========== */
