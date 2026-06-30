@@ -165,6 +165,19 @@
     });
   }
 
+  // ----------- NAV PEBBLE ON SCROLL -----------
+  function initNavScroll() {
+    var nav = document.querySelector('.glass-nav');
+    if (!nav) return;
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 50) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+    });
+  }
+
   // ----------- MOBILE NAV -----------
   function initMobileNav() {
     var toggle = document.getElementById('nav-toggle');
@@ -333,6 +346,7 @@
     initMobileNav();
     initSmoothScroll();
     initCursor();
+    initNavScroll();
 
     if (hasWebGL()) {
       var bgCanvas = document.getElementById('bg-canvas');
