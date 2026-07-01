@@ -26,13 +26,17 @@
 
 * { -webkit-tap-highlight-color: transparent; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   font-family: var(--font-body);
   background: var(--bg-0);
   color: var(--txt-0);
   cursor: auto;
+  overflow-x: hidden;
 }
 
 /* selection */
@@ -54,9 +58,11 @@ body {
 /* ========== GLITCH TEXT ========== */
 .glitch {
   position: relative;
-  display: inline-block;
+  display: block;
   color: var(--txt-0);
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  max-width: 100%;
+  overflow: hidden;
 }
 .glitch::before,
 .glitch::after {
