@@ -877,9 +877,140 @@ body.cursor-hover #cursor-dot { background: var(--neon-magenta); }
 }
 
 /* ========== RESPONSIVE TWEAKS ========== */
+
+/* --- Tablet (≤ 1024px) --- */
+@media (max-width: 1024px) {
+  /* Nav pebble: tighter margin on mid-size screens */
+  .glass-nav.nav-scrolled {
+    margin: 0.75rem 1.25rem 0;
+    max-width: none;
+  }
+}
+
+/* --- Tablet (≤ 768px) --- */
 @media (max-width: 768px) {
+  /* HUD brackets: smaller */
   .hud-bracket { width: 20px; height: 20px; }
   .scroll-indicator { bottom: 1rem; }
+
+  /* Nav pebble: full-width pill with small margin */
+  .glass-nav.nav-scrolled {
+    margin: 0.75rem 0.75rem 0;
+    border-radius: 9999px;
+    padding: 0 0.5rem;
+  }
+
+  /* Logo text: smaller on tablet */
+  .logo .logo-base { font-size: 0.95rem; letter-spacing: 0.15em; }
+
+  /* Divider line: ensure no horizontal overflow */
+  .w-\[200vw\] { width: 100vw !important; left: 0 !important; }
+
+  /* Countdown cells: allow wrap, smaller min-width */
+  .cd-cell { min-width: 56px; padding: 0.5rem 0.35rem; }
+
+  /* Timeline: single column */
+  .timeline-item { width: 100% !important; left: 0 !important; text-align: left !important; padding-left: 2.5rem !important; padding-right: 0 !important; }
+  .timeline-item .tl-dot { left: 13px !important; right: auto !important; }
+  .timeline-line { left: 20px !important; }
+  .day-header { padding: 2rem 0 0.75rem; }
+  .day-title { font-size: 1rem; }
+
+  /* About section: stack column */
+  .circuit-frame { padding: 1rem; }
+
+  /* Stat cards: 2 columns on tablet */
+  .stat-card { padding: 1rem; }
+  .stat-num { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+
+  /* Event cards: full width on tablet */
+  .event-card { padding: 1.25rem 1rem; }
+
+  /* FAQ items: smaller padding */
+  .faq-q { padding: 1rem 1.25rem; font-size: 1rem; }
+  .faq-a { padding: 0 1.25rem 1rem; }
+
+  /* Footer: stack vertically */
+  footer .grid { gap: 1.5rem; }
+}
+
+/* --- Mobile (≤ 640px) --- */
+@media (max-width: 640px) {
+  /* Body: prevent horizontal scroll */
+  body { overflow-x: hidden; }
+
+  /* Nav logo: compact */
+  .logo .logo-base { font-size: 0.85rem; letter-spacing: 0.1em; }
+
+  /* HUD brackets: even smaller, tighter to edge */
+  .hud-bracket { width: 16px; height: 16px; }
+  .hud-tl, .hud-bl { left: 12px !important; }
+  .hud-tr, .hud-br { right: 12px !important; }
+  .hud-tl, .hud-tr { top: 12px !important; }
+  .hud-bl, .hud-br { bottom: 12px !important; }
+
+  /* Hero text: don't let it overflow on small screens */
+  h1 .glitch { word-break: break-word; }
+
+  /* Subtitle: smaller tracking */
+  .font-sub.uppercase { letter-spacing: 0.1em !important; font-size: 1.1rem !important; }
+
+  /* Divider line: contained */
+  .hero-divider { width: 100% !important; left: 0 !important; }
+
+  /* Countdown: tighter grid */
+  .countdown { gap: 0.5rem !important; }
+  .cd-cell { min-width: 50px; padding: 0.5rem 0.25rem; }
+  .cd-num { font-size: 1.4rem; }
+  .cd-lab { font-size: 0.55rem; }
+
+  /* CTA buttons: stack & full width on tiny screens */
+  .flex.flex-col.sm\:flex-row { flex-direction: column !important; width: 100%; }
+  .btn-neon-fill, .btn-neon-outline { width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.9rem 1rem !important; }
+
+  /* Sponsor marquee: smaller logos */
+  .sponsor-logo { font-size: 1.1rem; }
+
+  /* Tags: smaller */
+  .tag { font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+
+  /* Stat grid: 3 cols squished, or let Tailwind handle with grid-cols-3 already */
+  .stat-num { font-size: 1.75rem; }
+
+  /* Timeline title: smaller */
+  .tl-title { font-size: 0.95rem; }
+  .tl-time { font-size: 0.75rem; }
+
+  /* Section headings: clamp */
+  h2.font-display { font-size: clamp(2rem, 8vw, 3.5rem) !important; }
+
+  /* FAQ: minimal padding */
+  .faq-q { font-size: 0.9rem; }
+
+  /* CTA section heading */
+  .cta-heading { font-size: clamp(2.5rem, 12vw, 5rem) !important; }
+
+  /* Scroll indicator: smaller */
+  .scroll-mouse { width: 18px; height: 28px; }
+
+  /* Mobile menu font: fit on screen */
+  .mobile-menu-inner ul { font-size: 1.75rem; }
+}
+
+/* --- Small phones (≤ 400px) --- */
+@media (max-width: 400px) {
+  .logo .logo-base { font-size: 0.75rem; }
+  .cd-cell { min-width: 44px; padding: 0.4rem 0.2rem; }
+  .cd-num { font-size: 1.2rem; }
+  h2.font-display { font-size: clamp(1.75rem, 9vw, 2.5rem) !important; }
+}
+
+/* --- Horizontal safe area (notch support) --- */
+@supports (padding: env(safe-area-inset-left)) {
+  .glass-nav .max-w-7xl {
+    padding-left: calc(1rem + env(safe-area-inset-left));
+    padding-right: calc(1rem + env(safe-area-inset-right));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
