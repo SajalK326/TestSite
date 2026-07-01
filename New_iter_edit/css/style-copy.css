@@ -310,6 +310,18 @@ body {
   margin-top: 0.5rem;
 }
 
+/* ========== HERO SECTION ========== */
+.hero-section {
+  min-height: 100vh;
+  min-height: 100dvh; /* accounts for mobile browser chrome */
+}
+.hero-content-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* space-y-6 equivalent */
+}
+
 /* ========== HUD ========== */
 .hud-bracket {
   position: absolute;
@@ -951,6 +963,11 @@ body.cursor-hover #cursor-dot { background: var(--neon-magenta); }
 
   /* HUD brackets: even smaller, tighter to edge */
   .hud-bracket { width: 16px; height: 16px; --hud-offset: 12px; }
+
+  /* Hero section: squish vertical spacing so bottom brackets & scroll are visible */
+  .hero-section { min-height: 100dvh; }
+  .intro-hero-content { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+  .hero-content-inner { gap: 0.65rem; }
 
   /* Hero text: scale properly on small screens */
 
