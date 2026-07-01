@@ -312,11 +312,12 @@ body {
   opacity: 0.5;
   pointer-events: none;
   z-index: 5;
+  --hud-offset: 24px;
 }
-.hud-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
-.hud-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
-.hud-bl { bottom: 24px; left: 24px; border-right: none; border-top: none; }
-.hud-br { bottom: 24px; right: 24px; border-left: none; border-top: none; }
+.hud-tl { top: var(--hud-offset); left: var(--hud-offset); border-right: none; border-bottom: none; }
+.hud-tr { top: var(--hud-offset); right: var(--hud-offset); border-left: none; border-bottom: none; }
+.hud-bl { bottom: var(--hud-offset); left: var(--hud-offset); border-right: none; border-top: none; }
+.hud-br { bottom: var(--hud-offset); right: var(--hud-offset); border-left: none; border-top: none; }
 @media (max-width: 768px) { .hud-bracket { width: 24px; height: 24px; } }
 
 .hud-ring {
@@ -858,22 +859,22 @@ body.cursor-hover #cursor-dot { background: var(--neon-magenta); }
 @keyframes intro-hud-tl {
   0% { top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; }
   15% { top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1; }
-  100% { top: 24px; left: 24px; transform: translate(0, 0); opacity: 0.5; }
+  100% { top: var(--hud-offset); left: var(--hud-offset); transform: translate(0, 0); opacity: 0.5; }
 }
 @keyframes intro-hud-tr {
   0% { top: 50%; right: 50%; transform: translate(50%, -50%); opacity: 0; }
   15% { top: 50%; right: 50%; transform: translate(50%, -50%); opacity: 1; }
-  100% { top: 24px; right: 24px; transform: translate(0, 0); opacity: 0.5; }
+  100% { top: var(--hud-offset); right: var(--hud-offset); transform: translate(0, 0); opacity: 0.5; }
 }
 @keyframes intro-hud-bl {
   0% { bottom: 50%; left: 50%; transform: translate(-50%, 50%); opacity: 0; }
   15% { bottom: 50%; left: 50%; transform: translate(-50%, 50%); opacity: 1; }
-  100% { bottom: 24px; left: 24px; transform: translate(0, 0); opacity: 0.5; }
+  100% { bottom: var(--hud-offset); left: var(--hud-offset); transform: translate(0, 0); opacity: 0.5; }
 }
 @keyframes intro-hud-br {
   0% { bottom: 50%; right: 50%; transform: translate(50%, 50%); opacity: 0; }
   15% { bottom: 50%; right: 50%; transform: translate(50%, 50%); opacity: 1; }
-  100% { bottom: 24px; right: 24px; transform: translate(0, 0); opacity: 0.5; }
+  100% { bottom: var(--hud-offset); right: var(--hud-offset); transform: translate(0, 0); opacity: 0.5; }
 }
 
 /* ========== RESPONSIVE TWEAKS ========== */
@@ -943,14 +944,9 @@ body.cursor-hover #cursor-dot { background: var(--neon-magenta); }
   .logo .logo-base { font-size: 0.85rem; letter-spacing: 0.1em; }
 
   /* HUD brackets: even smaller, tighter to edge */
-  .hud-bracket { width: 16px; height: 16px; }
-  .hud-tl, .hud-bl { left: 12px !important; }
-  .hud-tr, .hud-br { right: 12px !important; }
-  .hud-tl, .hud-tr { top: 12px !important; }
-  .hud-bl, .hud-br { bottom: 12px !important; }
+  .hud-bracket { width: 16px; height: 16px; --hud-offset: 12px; }
 
-  /* Hero text: don't let it overflow on small screens */
-  h1 .glitch { word-break: break-word; }
+  /* Hero text: scale properly on small screens */
 
   /* Subtitle: smaller tracking */
   .font-sub.uppercase { letter-spacing: 0.1em !important; font-size: 1.1rem !important; }
