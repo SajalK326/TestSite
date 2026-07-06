@@ -347,6 +347,7 @@
     initSmoothScroll();
     initCursor();
     initNavScroll();
+    fitFooterWatermark();
 
     if (hasWebGL()) {
       var bgCanvas = document.getElementById('bg-canvas');
@@ -360,9 +361,33 @@
     }
   }
 
+  // ----------- FOOTER WATERMARK AUTO-FIT -----------
+  function fitFooterWatermark() {
+    var el = document.querySelector('.footer-wm-text');
+    if (!el) return;
+    var parent = el.parentElement;
+
+    // 1. Set a known reference size so we can measure proportionally
+    el.style.fontSize = '200px';
+
+    // 2. scrollWidth gives the full rendered text width at 200px
+    var refWidth  = el.scrollWidth;
+    var available = parent.offsetWidth;
+
+    if (refWidth <= 0 || available <= 0) return;
+
+    // 3. Scale font-size so text fills ~97% of the footer width
+    var fitted = (200 * (available / refWidth)) * 0.97;
+    el.style.fontSize = fitted + 'px';
+  }
+
+  window.addEventListener('resize', fitFooterWatermark);
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
   } else {
     boot();
   }
 })();
+
+

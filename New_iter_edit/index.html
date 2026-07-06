@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050510" />
-  <meta name="description" content="Tomorrow.exe — IEEE IGNITE WEEK 2026. Leveraging Technology for a Better Tomorrow. A 7-day build marathon." />
+  <meta name="description"
+    content="Tomorrow.exe — IEEE IGNITE WEEK 2026. Leveraging Technology for a Better Tomorrow. A 7-day build marathon." />
   <meta property="og:title" content="Tomorrow.exe — IEEE IGNITE WEEK 2026" />
-  <meta property="og:description" content="7 days. 5 problem tracks. Grand Prize: The Ohm Trophy. Build What the World Needs Next." />
+  <meta property="og:description"
+    content="7 days. 6 problem tracks. Grand Prize: The Ohm Trophy. Build What the World Needs Next." />
   <meta property="og:type" content="website" />
 
-  <title>Tomorrow.exe — IEEE IGNITE WEEK 2026</title>
+  <title>Tomorrow.exe : IEEE IGNITE WEEK 2026</title>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050510'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-size='18' font-weight='900' fill='%2300f0ff'%3ETF%3C/text%3E%3C/svg%3E" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050510'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-size='18' font-weight='900' fill='%2300f0ff'%3ETF%3C/text%3E%3C/svg%3E" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <!-- Tailwind Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -56,7 +62,9 @@
 <body class="bg-bg-0 text-txt-0 font-body antialiased overflow-x-hidden">
 
   <!-- Top-of-page dev error banner (hidden by default; revealed by window.addEventListener('error')) -->
-  <div id="err-banner" hidden style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#ff006e;color:#050510;font-family:monospace;font-size:12px;padding:10px 16px;border-bottom:2px solid #050510;"></div>
+  <div id="err-banner" hidden
+    style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#ff006e;color:#050510;font-family:monospace;font-size:12px;padding:10px 16px;border-bottom:2px solid #050510;">
+  </div>
   <script>
     // Surface module-load + runtime errors to the user when running from file://
     (function () {
@@ -86,7 +94,9 @@
   <header id="top" class="fixed top-0 left-0 right-0 z-50">
     <nav class="glass-nav">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#top" class="logo font-display font-black text-xl tracking-widest text-txt-0 hover:text-neon-cyan transition-colors" data-text="TOMORROW.EXE">
+        <a href="#top"
+          class="logo font-display font-black text-xl tracking-widest text-txt-0 hover:text-neon-cyan transition-colors"
+          data-text="TOMORROW.EXE">
           <span class="logo-base">TOMORROW<span class="text-neon-cyan">.EXE</span></span>
         </a>
 
@@ -100,7 +110,8 @@
           </li>
         </ul>
 
-        <button id="nav-toggle" class="lg:hidden nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <button id="nav-toggle" class="lg:hidden nav-toggle" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobile-menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -110,7 +121,9 @@
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu-inner">
         <button id="nav-close" class="nav-close" aria-label="Close menu">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
         </button>
         <ul class="font-display text-3xl font-black uppercase tracking-widest space-y-6 text-center">
           <li><a class="mobile-link" href="#about">About</a></li>
@@ -128,10 +141,12 @@
     <!-- ============== HERO ============== -->
     <section class="relative flex items-center overflow-hidden hero-section">
       <!-- Background canvas (full-section, behind content) -->
-      <canvas id="bg-canvas" class="absolute inset-0 w-full h-full pointer-events-none intro-canvas" aria-hidden="true"></canvas>
+      <canvas id="bg-canvas" class="absolute inset-0 w-full h-full pointer-events-none intro-canvas"
+        aria-hidden="true"></canvas>
 
       <!-- Gradient overlay for readability -->
-      <div class="absolute inset-0 bg-gradient-to-b from-bg-0/40 via-transparent to-bg-0 pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-0/40 via-transparent to-bg-0 pointer-events-none"
+        aria-hidden="true"></div>
 
       <!-- HUD corner brackets -->
       <div class="hud-bracket hud-tl" aria-hidden="true"></div>
@@ -139,7 +154,8 @@
       <div class="hud-bracket hud-bl" aria-hidden="true"></div>
       <div class="hud-bracket hud-br" aria-hidden="true"></div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-8 items-center py-12 intro-hero-content">
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-8 items-center py-12 intro-hero-content">
 
         <!-- Text content centered -->
         <div class="lg:col-span-12 flex flex-col items-center hero-content-inner text-center w-full">
@@ -149,22 +165,27 @@
           </p>
 
           <h1 class="font-display font-black leading-[0.85] tracking-tighter text-txt-0 w-full">
-            <span class="glitch text-[clamp(1.5rem,9vw,8rem)]" data-text="TOMORROW.EXE">TOMORROW<span class="text-neon-cyan">.EXE</span></span>
+            <span class="glitch text-[clamp(1.5rem,9vw,8rem)]" data-text="TOMORROW.EXE">TOMORROW<span
+                class="text-neon-cyan">.EXE</span></span>
           </h1>
 
-          <p class="font-sub font-bold text-base sm:text-xl md:text-2xl lg:text-4xl uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.25em] bg-gradient-to-r from-neon-magenta via-neon-purple to-neon-cyan bg-clip-text text-transparent max-w-full break-words">
-            Leveraging Technology for a Better Tomorrow
+          <p
+            class="font-sub font-bold text-base sm:text-xl md:text-2xl lg:text-4xl uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.25em] bg-gradient-to-r from-neon-magenta via-neon-purple to-neon-cyan bg-clip-text text-transparent max-w-full break-words">
+            BE THE ARCHITECT OF A BETTER TOMORROW
           </p>
 
           <p class="font-body text-txt-1 w-full max-w-xl mx-auto text-base md:text-lg leading-relaxed break-words px-2">
-            7 Days. 5 Tracks. <span class="text-neon-cyan">Build What the World Needs Next.</span>
+            7 Days. 6 Tracks. <span class="text-neon-cyan">Build What the World Needs Next.</span>
           </p>
 
           <!-- Divider Line -->
-          <div class="w-full h-[5px] bg-neon-magenta opacity-70 my-6" style="box-shadow: 0 0 25px var(--neon-magenta), 0 0 50px var(--neon-magenta); mix-blend-mode: screen;"></div>
+          <div class="w-full h-[5px] bg-neon-magenta opacity-70 my-6"
+            style="box-shadow: 0 0 25px var(--neon-magenta), 0 0 50px var(--neon-magenta); mix-blend-mode: screen;">
+          </div>
 
           <!-- Countdown -->
-          <div class="countdown flex justify-center gap-3 md:gap-4 my-8" aria-live="polite" aria-label="Countdown to TechFest 2026">
+          <div class="countdown flex justify-center gap-3 md:gap-4 my-8" aria-live="polite"
+            aria-label="Countdown to TechFest 2026">
             <div class="cd-cell"><span class="cd-num" id="cd-days">00</span><span class="cd-lab">Days</span></div>
             <div class="cd-cell"><span class="cd-num" id="cd-hours">00</span><span class="cd-lab">Hours</span></div>
             <div class="cd-cell"><span class="cd-num" id="cd-mins">00</span><span class="cd-lab">Mins</span></div>
@@ -192,22 +213,25 @@
           <div class="lg:col-span-6 space-y-6" data-reveal>
             <p class="font-sub uppercase tracking-[0.3em] text-neon-magenta text-sm">// 01 — The Vision</p>
             <h2 class="font-display font-black text-4xl md:text-6xl leading-[1.05]">
-              Leveraging Technology for a <br/><span class="text-neon-cyan">Better</span> <span class="text-neon-magenta">Tomorrow</span>.
+              Leveraging Technology for a <br /><span class="text-neon-cyan">Better</span> <span
+                class="text-neon-magenta">Tomorrow</span>.
             </h2>
             <p class="font-body text-txt-1 leading-relaxed text-lg">
-              For 29 years, IEEE has been the launchpad where ideas become industries. This Ignite Week, we go further — challenging you to build solutions for real-world problems.
+              For 29 years, IEEE has been the launchpad where ideas become industries. This Ignite Week, we go further —
+              challenging you to build solutions for real-world problems.
             </p>
             <p class="font-body text-txt-1 leading-relaxed text-lg">
-              Expect 7 days of events including the 3-day build marathon, paper prototypes, code hunts, and talks. Build. Compete. <span class="text-neon-cyan">Innovate.</span>
+              Expect 7 days of events including the 3-day build marathon, paper prototypes, code hunts, and talks.
+              Build. Compete. <span class="text-neon-cyan">Innovate.</span>
             </p>
             <div class="pt-4 flex flex-wrap gap-3">
               <span class="tag">7 Days</span>
-              <span class="tag">5 Problem Tracks</span>
+              <span class="tag">6 Problem Tracks</span>
               <span class="tag">The Ohm Trophy</span>
             </div>
           </div>
 
-          <div class="lg:col-span-6" data-reveal data-reveal-delay="150">
+          <div class="lg:col-span-6 hidden lg:block" data-reveal data-reveal-delay="150">
             <div class="circuit-frame">
               <svg viewBox="0 0 400 400" class="w-full h-auto" aria-hidden="true">
                 <defs>
@@ -280,8 +304,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16 space-y-4" data-reveal>
           <p class="font-sub uppercase tracking-[0.3em] text-neon-magenta text-sm">// 02 — Problem Statements</p>
-          <h2 class="font-display font-black text-4xl md:text-6xl">Hackathon <span class="glitch-mini" data-text="Tracks">Tracks</span></h2>
-          <p class="font-body text-txt-1 max-w-2xl mx-auto">5 problem tracks. 1 grand prize. Build what the world needs next.</p>
+          <h2 class="font-display font-black text-4xl md:text-6xl">Hackathon <span class="glitch-mini"
+              data-text="Tracks">Tracks</span></h2>
+          <p class="font-body text-txt-1 max-w-2xl mx-auto">6 problem tracks. 1 grand prize. Build what the world needs
+            next.</p>
         </div>
 
         <!-- Cards grid -->
@@ -294,10 +320,14 @@
             <div class="card-bracket card-bracket-br"></div>
             <div class="card-shine"></div>
             <div class="event-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/><circle cx="12" cy="12" r="4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3" />
+                <circle cx="12" cy="12" r="4" />
+              </svg>
             </div>
             <h3 class="event-title">Smart Cities</h3>
-            <p class="event-desc">Placeholder text for the Smart Cities problem statement. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="event-desc">Placeholder text for the Smart Cities problem statement. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit.</p>
             <span class="event-meta">Track 1</span>
           </article>
 
@@ -308,10 +338,14 @@
             <div class="card-bracket card-bracket-br"></div>
             <div class="card-shine"></div>
             <div class="event-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 12l2 2 4-4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                <path d="M8 12l2 2 4-4" />
+              </svg>
             </div>
             <h3 class="event-title">Healthcare Tech</h3>
-            <p class="event-desc">Placeholder text for the Healthcare Tech problem statement. Suspendisse potenti. Donec non lorem vel orci varius facilisis.</p>
+            <p class="event-desc">Placeholder text for the Healthcare Tech problem statement. Suspendisse potenti. Donec
+              non lorem vel orci varius facilisis.</p>
             <span class="event-meta">Track 2</span>
           </article>
 
@@ -322,10 +356,14 @@
             <div class="card-bracket card-bracket-br"></div>
             <div class="card-shine"></div>
             <div class="event-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 3v18M3 12h18"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 12c0-5 4-9 9-9s9 4 9 9" />
+                <path d="M12 3v18M3 12h18" />
+              </svg>
             </div>
             <h3 class="event-title">AgriTech</h3>
-            <p class="event-desc">Placeholder text for the AgriTech problem statement. Nulla facilisi. Curabitur sed nisl at leo egestas vehicula.</p>
+            <p class="event-desc">Placeholder text for the AgriTech problem statement. Nulla facilisi. Curabitur sed
+              nisl at leo egestas vehicula.</p>
             <span class="event-meta">Track 3</span>
           </article>
 
@@ -336,10 +374,15 @@
             <div class="card-bracket card-bracket-br"></div>
             <div class="card-shine"></div>
             <div class="event-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="1.5" fill="currentColor"/><circle cx="16" cy="12" r="1.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+                <circle cx="8" cy="12" r="1.5" fill="currentColor" />
+                <circle cx="16" cy="12" r="1.5" fill="currentColor" />
+              </svg>
             </div>
             <h3 class="event-title">Edu-Tech</h3>
-            <p class="event-desc">Placeholder text for the Edu-Tech problem statement. Phasellus volutpat libero nec felis interdum, quis efficitur eros dictum.</p>
+            <p class="event-desc">Placeholder text for the Edu-Tech problem statement. Phasellus volutpat libero nec
+              felis interdum, quis efficitur eros dictum.</p>
             <span class="event-meta">Track 4</span>
           </article>
 
@@ -350,11 +393,32 @@
             <div class="card-bracket card-bracket-br"></div>
             <div class="card-shine"></div>
             <div class="event-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 22l10-4 10 4L12 2z"></path>
+                <path d="M12 2v16"></path>
+              </svg>
+            </div>
+            <h3 class="event-title">Space Tech</h3>
+            <p class="event-desc">Placeholder text for the Space Tech problem statement. Explore the cosmos and build
+              solutions for the final frontier.</p>
+            <span class="event-meta">Track 5</span>
+          </article>
+
+          <article class="event-card tilt" data-cat="hackathon" data-reveal data-reveal-delay="200">
+            <div class="card-bracket card-bracket-tl"></div>
+            <div class="card-bracket card-bracket-tr"></div>
+            <div class="card-bracket card-bracket-bl"></div>
+            <div class="card-bracket card-bracket-br"></div>
+            <div class="card-shine"></div>
+            <div class="event-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z" />
+              </svg>
             </div>
             <h3 class="event-title">Open Innovation</h3>
-            <p class="event-desc">Placeholder text for the Open Innovation problem statement. Mauris lacinia augue quis diam suscipit, in vehicula erat rhoncus.</p>
-            <span class="event-meta">Track 5</span>
+            <p class="event-desc">Placeholder text for the Open Innovation problem statement. Mauris lacinia augue quis
+              diam suscipit, in vehicula erat rhoncus.</p>
+            <span class="event-meta">Track 6</span>
           </article>
 
         </div>
@@ -367,7 +431,8 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16 space-y-4" data-reveal>
           <p class="font-sub uppercase tracking-[0.3em] text-neon-magenta text-sm">// 04 — Timeline</p>
-          <h2 class="font-display font-black text-4xl md:text-6xl">Seven Days.<br/>One <span class="text-neon-cyan">Better Tomorrow</span>.</h2>
+          <h2 class="font-display font-black text-4xl md:text-6xl">Seven Days.<br />One <span
+              class="text-neon-cyan">Better Tomorrow</span>.</h2>
         </div>
 
         <div class="timeline relative">
@@ -620,7 +685,8 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16 space-y-4" data-reveal>
           <p class="font-sub uppercase tracking-[0.3em] text-neon-cyan text-sm">// 05 — Inquiries</p>
-          <h2 class="font-display font-black text-4xl md:text-6xl">Frequently <span class="text-neon-magenta">Asked</span></h2>
+          <h2 class="font-display font-black text-4xl md:text-6xl">Frequently <span
+              class="text-neon-magenta">Asked</span></h2>
         </div>
 
         <div class="faq-list space-y-3" data-reveal>
@@ -631,7 +697,8 @@
               <span class="faq-icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-a">
-              <p>Open to all enrolled students of this college only. No external teams. Teams of 2–4. Cross-department and cross-year teams are encouraged.</p>
+              <p>Open to all enrolled students of this college only. No external teams. Teams of 2–4. Cross-department
+                and cross-year teams are encouraged.</p>
             </div>
           </details>
 
@@ -641,7 +708,8 @@
               <span class="faq-icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-a">
-              <p>Registration is required for all events. A participation fee applies only to the Hackathon; all other events are free of charge. Registration forms will be circulated 1 week before the event.</p>
+              <p>Registration is required for all events. A participation fee applies only to the Hackathon; all other
+                events are free of charge. Registration forms will be circulated 1 week before the event.</p>
             </div>
           </details>
 
@@ -661,7 +729,8 @@
               <span class="faq-icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-a">
-              <p>The Hackathon is judged on: Innovation (30%), Technical Execution (30%), Social Impact (20%), and Presentation (20%).</p>
+              <p>The Hackathon is judged on: Innovation (30%), Technical Execution (30%), Social Impact (20%), and
+                Presentation (20%).</p>
             </div>
           </details>
 
@@ -671,7 +740,8 @@
               <span class="faq-icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-a">
-              <p>Certificates will be provided for all participants. Trophies and cash prizes will be awarded to the top 3 teams. The Grand Prize is The Ohm Trophy!</p>
+              <p>Certificates will be provided for all participants. Trophies and cash prizes will be awarded to the top
+                3 teams. The Grand Prize is The Ohm Trophy!</p>
             </div>
           </details>
 
@@ -689,7 +759,9 @@
         <p class="font-sub uppercase tracking-[0.4em] text-neon-magenta text-sm">// 06 — The Call</p>
         <h2 class="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-[0.95]">
           <span class="glitch block" data-text="BE THE">BE THE</span>
-          <span class="block bg-gradient-to-r from-neon-cyan via-white to-neon-magenta bg-clip-text text-transparent">BETTER TOMORROW</span>
+          <span
+            class="block bg-gradient-to-r from-neon-cyan via-white to-neon-magenta bg-clip-text text-transparent">BETTER
+            TOMORROW</span>
         </h2>
         <p class="font-body text-txt-1 text-lg md:text-xl max-w-2xl mx-auto">
           Registrations are open. Pick your tier. Pick your events. Cross the threshold.
@@ -706,18 +778,40 @@
   </main>
 
   <!-- ============== FOOTER ============== -->
-  <footer class="relative border-t border-neon-cyan/20 bg-bg-1">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-3 gap-10">
+  <footer class="footer-wm-host relative border-t border-neon-cyan/20 bg-bg-1 overflow-hidden">
+
+    <!-- Watermark background text -->
+    <div class="footer-wm" aria-hidden="true">
+      <span class="footer-wm-text">IEEE IGNITE WEEK</span>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-3 gap-10">
       <div class="md:col-span-1 space-y-4">
-        <a href="#top" class="font-display font-black text-2xl text-txt-0">TOMORROW<span class="text-neon-cyan">.EXE</span></a>
+        <a href="#top" class="font-display font-black text-2xl text-txt-0">TOMORROW<span
+            class="text-neon-cyan">.EXE</span></a>
         <p class="font-body text-txt-1 text-sm leading-relaxed">
-          IEEE Ignite Week 2026. <br/>Leveraging Technology for a Better Tomorrow.
+          IEEE Ignite Week 2026. <br />Leveraging Technology for a Better Tomorrow.
         </p>
         <div class="flex gap-4 pt-2">
-          <a href="#" aria-label="Instagram" class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="Twitter / X" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 3h3l-7.5 8.6L22 21h-6.8l-5.3-6.5L4 21H1l8-9.2L1 3h7l4.7 6 5.3-6zM16 19h1.7L7.7 5H6L16 19z"/></svg></a>
-          <a href="#" aria-label="LinkedIn" class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v8M8 7v.01M12 18v-5a2 2 0 014 0v5"/></svg></a>
-          <a href="#" aria-label="YouTube" class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Instagram" class="social-icon"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+            </svg></a>
+          <a href="#" aria-label="Twitter / X" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 3h3l-7.5 8.6L22 21h-6.8l-5.3-6.5L4 21H1l8-9.2L1 3h7l4.7 6 5.3-6zM16 19h1.7L7.7 5H6L16 19z" />
+            </svg></a>
+          <a href="#" aria-label="LinkedIn" class="social-icon"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M8 10v8M8 7v.01M12 18v-5a2 2 0 014 0v5" />
+            </svg></a>
+          <a href="#" aria-label="YouTube" class="social-icon"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="6" width="20" height="12" rx="2" />
+              <path d="M10 9l5 3-5 3V9z" fill="currentColor" />
+            </svg></a>
         </div>
       </div>
 
@@ -740,12 +834,11 @@
           <li>Mumbai 400076, India</li>
         </ul>
       </div>
-
-
     </div>
 
-    <div class="border-t border-neon-cyan/10 py-6">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs font-mono text-txt-2 uppercase tracking-widest">
+    <div class="relative z-10 border-t border-neon-cyan/10 py-6">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs font-mono text-txt-2 uppercase tracking-widest">
         <p>© 2026 IEEE Ignite Week · All systems nominal</p>
         <p>Made for a better Tomorrow, by the IEEE UPES Chapter Alliance</p>
       </div>
@@ -755,4 +848,5 @@
   <!-- Scripts: bundled non-module (works from file://) -->
   <script src="js/app-copy.js"></script>
 </body>
+
 </html>
