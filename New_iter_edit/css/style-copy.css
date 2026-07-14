@@ -916,6 +916,317 @@ body {
   letter-spacing: 0.1em;
 }
 
+/* ========== PRIZE CARDS ========== */
+
+/* Grand Prize Spotlight */
+.prize-grand-card {
+  position: relative;
+}
+
+.prize-grand-inner {
+  position: relative;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 90, 31, 0.08) 0%, rgba(11, 10, 10, 0.96) 50%, rgba(211, 47, 47, 0.06) 100%);
+  border: 1px solid var(--neon-cyan);
+  box-shadow: var(--glow-cy), inset 0 0 60px rgba(255, 90, 31, 0.04);
+  overflow: hidden;
+}
+
+.prize-grand-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(255, 90, 31, 0.12), transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(211, 47, 47, 0.08), transparent 60%);
+  pointer-events: none;
+  animation: prize-pulse 4s ease-in-out infinite;
+}
+
+@keyframes prize-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+
+.prize-trophy-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prize-trophy-icon {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-cyan);
+  filter: drop-shadow(0 0 16px rgba(255, 90, 31, 0.7));
+  animation: trophy-glow 3s ease-in-out infinite;
+}
+
+@keyframes trophy-glow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 90, 31, 0.6)); }
+  50%       { filter: drop-shadow(0 0 28px rgba(255, 90, 31, 0.9)); }
+}
+
+/* Prize Grid Cards */
+.prize-card {
+  position: relative;
+  padding: 1.75rem 1.5rem;
+  background: linear-gradient(160deg, rgba(10, 10, 26, 0.9), rgba(5, 5, 16, 0.9));
+  border: 1px solid var(--border-cy);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prize-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cy), inset 0 0 40px rgba(255, 90, 31, 0.04);
+}
+
+.prize-card:hover .card-bracket { opacity: 1; }
+.prize-card:hover .card-shine    { opacity: 1; }
+
+.prize-card-all {
+  border-color: rgba(211, 47, 47, 0.3);
+}
+
+.prize-card-all:hover {
+  border-color: var(--neon-magenta);
+  box-shadow: var(--glow-mg), inset 0 0 40px rgba(211, 47, 47, 0.04);
+}
+
+.prize-card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-cyan);
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 6px rgba(255, 90, 31, 0.5));
+}
+
+.prize-card-icon-mg {
+  color: var(--neon-magenta);
+  filter: drop-shadow(0 0 6px rgba(211, 47, 47, 0.5));
+}
+
+.prize-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.prize-card-rank {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin-bottom: 0.1rem;
+}
+
+.prize-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--txt-0);
+  line-height: 1.2;
+}
+
+.prize-card-desc {
+  font-size: 0.85rem;
+  color: var(--txt-1);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.prize-card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  border: 1px solid var(--border-cy);
+  background: rgba(255, 90, 31, 0.06);
+}
+
+.prize-card-badge-mg {
+  color: var(--neon-magenta);
+  border-color: var(--border-mg);
+  background: rgba(211, 47, 47, 0.06);
+}
+
+/* ========== ORGANIZING COMMITTEE ========== */
+
+/* Advisor spotlight */
+.committee-advisor-card {
+  position: relative;
+  padding: 2rem 2rem;
+  background: linear-gradient(135deg, rgba(5, 5, 16, 0.95) 0%, rgba(22, 20, 20, 0.9) 100%);
+  border: 1px solid var(--border-cy);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.committee-advisor-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cy);
+}
+
+.committee-advisor-card:hover .card-bracket { opacity: 1; }
+
+.committee-advisor-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 10% 50%, rgba(255, 90, 31, 0.10), transparent 55%);
+  pointer-events: none;
+  animation: prize-pulse 5s ease-in-out infinite;
+}
+
+/* Avatars */
+.committee-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 14px rgba(255, 90, 31, 0.4);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 90, 31, 0.18), rgba(11, 10, 10, 0.95));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.committee-avatar span {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(255, 90, 31, 0.6);
+  user-select: none;
+}
+
+.committee-avatar-mg {
+  border-color: var(--neon-magenta);
+  box-shadow: 0 0 14px rgba(211, 47, 47, 0.4);
+  background: radial-gradient(circle at 35% 35%, rgba(211, 47, 47, 0.15), rgba(11, 10, 10, 0.95));
+}
+
+.committee-avatar-mg span {
+  color: var(--neon-magenta);
+  text-shadow: 0 0 8px rgba(211, 47, 47, 0.6);
+}
+
+.committee-avatar-lg {
+  width: 100px;
+  height: 100px;
+}
+
+.committee-avatar-lg span {
+  font-size: 1.5rem;
+}
+
+.committee-avatar-sm {
+  width: 52px;
+  height: 52px;
+}
+
+.committee-avatar-sm span {
+  font-size: 0.85rem;
+}
+
+.committee-avatar-glow {
+  animation: committee-avatar-pulse 3s ease-in-out infinite;
+}
+
+@keyframes committee-avatar-pulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(255, 90, 31, 0.4); }
+  50%       { box-shadow: 0 0 28px rgba(255, 90, 31, 0.7); }
+}
+
+/* Member cards — large (leadership row) */
+.committee-member-card {
+  position: relative;
+  padding: 1.75rem 1.5rem;
+  background: linear-gradient(160deg, rgba(10, 10, 26, 0.9), rgba(5, 5, 16, 0.9));
+  border: 1px solid var(--border-cy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
+
+.committee-member-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cy), inset 0 0 30px rgba(255, 90, 31, 0.04);
+}
+
+.committee-member-card:hover .card-bracket { opacity: 1; }
+.committee-member-card:hover .card-shine    { opacity: 1; }
+
+.committee-member-card:hover .committee-avatar {
+  box-shadow: 0 0 22px rgba(255, 90, 31, 0.7);
+  transform: translateY(-3px);
+}
+
+.committee-member-card:hover .committee-avatar-mg {
+  box-shadow: 0 0 22px rgba(211, 47, 47, 0.7);
+}
+
+/* Member cards — small (extended grid) */
+.committee-member-card-sm {
+  padding: 1.25rem 1rem;
+}
+
+/* Typography */
+.committee-role {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin-top: 0.75rem;
+}
+
+.committee-role-sm {
+  font-size: 0.55rem;
+}
+
+.committee-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--txt-0);
+  line-height: 1.2;
+}
+
+.committee-name-sm {
+  font-size: 0.9rem;
+}
+
+.committee-dept {
+  font-family: var(--font-sub);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--txt-2);
+  text-transform: uppercase;
+}
+
 /* ========== SPEAKERS RAIL ========== */
 .speaker-rail {
   display: flex;
