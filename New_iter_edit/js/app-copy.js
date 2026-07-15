@@ -1,7 +1,3 @@
-// ============================================
-// TechFest IITB 2026 — bundled, non-module
-// Works from file:// without a server.
-// ============================================
 (function () {
   'use strict';
 
@@ -47,6 +43,35 @@
       });
     }, { threshold: 0.12 });
     els.forEach(function (el) { io.observe(el); });
+  }
+
+  // ----------- ABOUT SECTION CINEMATIC ENTRANCE -----------
+  function initAboutCinematic() {
+    var section = document.getElementById('about');
+    if (!section || !('IntersectionObserver' in window)) {
+      // fallback: show everything immediately
+      section && section.classList.add('about-section-active');
+      document.querySelectorAll('.about-text-block').forEach(function (el) { el.classList.add('text-visible'); });
+      return;
+    }
+    var triggered = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !triggered) {
+          triggered = true;
+          // Phase 1: trigger beam draw animation
+          section.classList.add('about-section-active');
+          // Phase 2: after beam animation completes (~1.4s), fade in the text
+          setTimeout(function () {
+            document.querySelectorAll('.about-text-block').forEach(function (el, i) {
+              setTimeout(function () { el.classList.add('text-visible'); }, i * 120);
+            });
+          }, 1350);
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(section);
   }
 
   // ----------- COUNT-UP STATS -----------
@@ -340,6 +365,7 @@
   function boot() {
     initCountdown('2026-12-26T00:00:00+05:30');
     initReveal();
+    initAboutCinematic();
     initCounters();
     initTilt();
     initFilters();

@@ -471,6 +471,47 @@ body {
   transform: translate(-1px, -1px);
 }
 
+/* Hero primary CTA — extra prominence */
+.btn-hero-cta {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  box-shadow: var(--glow-cy), 0 0 40px rgba(255, 90, 31, 0.35);
+  animation: hero-cta-pulse 2.4s ease-in-out infinite;
+}
+
+.btn-hero-cta:hover {
+  animation: none;
+  box-shadow: var(--glow-mg), 0 0 55px rgba(211, 47, 47, 0.5);
+  transform: translate(-2px, -2px) scale(1.03);
+}
+
+@keyframes hero-cta-pulse {
+  0%, 100% {
+    box-shadow: var(--glow-cy), 0 0 30px rgba(255, 90, 31, 0.3);
+  }
+  50% {
+    box-shadow: var(--glow-cy), 0 0 55px rgba(255, 90, 31, 0.6), 0 0 80px rgba(255, 90, 31, 0.2);
+  }
+}
+
+/* Nav primary CTA — tighter pulse */
+.btn-nav-cta {
+  animation: nav-cta-pulse 3s ease-in-out infinite;
+}
+
+.btn-nav-cta:hover {
+  animation: none;
+}
+
+@keyframes nav-cta-pulse {
+  0%, 100% {
+    box-shadow: var(--glow-cy);
+  }
+  50% {
+    box-shadow: var(--glow-cy), 0 0 22px rgba(255, 90, 31, 0.5);
+  }
+}
+
 /* ========== COUNTDOWN ========== */
 .countdown {
   font-family: var(--font-mono);
@@ -670,6 +711,7 @@ body {
   color: var(--neon-cyan);
   border: 1px solid var(--border-cy);
   background: rgba(255, 90, 31, 0.04);
+  text-align: center;
 }
 
 .stat-card {
@@ -1693,6 +1735,62 @@ body.cursor-hover #cursor-dot {
   opacity: 1;
   transform: translateY(0);
 }
+
+[data-reveal="left"] {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-reveal="left"].is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ========== ABOUT SECTION — CINEMATIC ENTRANCE ========== */
+/* Phase 1: Beam draws from left to right */
+.about-beam-path {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  transition: none;
+}
+
+.about-section-active .about-beam-path {
+  animation: beam-draw-in 1.0s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.about-section-active .about-beam-path:nth-child(1) { animation-delay: 0.0s; }
+.about-section-active .about-beam-path:nth-child(2) { animation-delay: 0.08s; }
+.about-section-active .about-beam-path:nth-child(3) { animation-delay: 0.16s; }
+.about-section-active .about-beam-path:nth-child(4) { animation-delay: 0.24s; }
+.about-section-active .about-beam-path:nth-child(5) { animation-delay: 0.32s; }
+
+@keyframes beam-draw-in {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Junction dots start invisible and pop in as beams finish */
+.about-beam-dot {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+.about-section-active .about-beam-dot {
+  opacity: 1;
+  transition-delay: 1.0s;
+}
+
+/* Phase 2: Text fades in after beam completes */
+.about-text-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.about-text-block.text-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-text-block.text-visible:nth-child(1) { transition-delay: 0s; }
+.about-text-block.text-visible:nth-child(2) { transition-delay: 0.12s; }
+.about-text-block.text-visible:nth-child(3) { transition-delay: 0.24s; }
 
 /* ========== INTRO ANIMATION ========== */
 .intro-canvas {
