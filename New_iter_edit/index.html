@@ -54,6 +54,7 @@
 
   <!-- Custom styles -->
   <link rel="stylesheet" href="css/style-copy.css" />
+  <link rel="stylesheet" href="css/registration.css" />
 
   <!-- Three.js (non-module UMD, exposes global THREE) -->
   <script src="https://unpkg.com/three@0.150.0/build/three.min.js"></script>
@@ -61,27 +62,7 @@
 
 <body class="bg-bg-0 text-txt-0 font-body antialiased overflow-x-hidden">
 
-  <!-- Top-of-page dev error banner (hidden by default; revealed by window.addEventListener('error')) -->
-  <div id="err-banner" hidden
-    style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#ff006e;color:#050510;font-family:monospace;font-size:12px;padding:10px 16px;border-bottom:2px solid #050510;">
-  </div>
-  <script>
-    // Surface module-load + runtime errors to the user when running from file://
-    (function () {
-      var banner = document.getElementById('err-banner');
-      if (!banner) return;
-      function show(msg) {
-        banner.hidden = false;
-        banner.textContent = '⚠ ' + msg;
-      }
-      window.addEventListener('error', function (e) {
-        show('Error: ' + (e.message || 'unknown') + (e.filename ? ' (' + e.filename + ':' + e.lineno + ')' : ''));
-      });
-      window.addEventListener('unhandledrejection', function (e) {
-        show('Module load failed: ' + (e.reason && e.reason.message ? e.reason.message : e.reason));
-      });
-    })();
-  </script>
+
 
   <!-- Custom cursor (desktop only) -->
   <div id="cursor-dot" aria-hidden="true"></div>
@@ -108,7 +89,7 @@
           <li><a href="#committee" class="nav-link">Team</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li>
-            <a href="#register" class="btn-neon-fill btn-nav-cta px-6 py-2.5">Register Now →</a>
+            <a href="#register" data-action="open-registration" class="btn-neon-fill btn-nav-cta px-6 py-2.5">Register Now →</a>
           </li>
         </ul>
 
@@ -134,7 +115,7 @@
           <li><a class="mobile-link" href="#schedule">Schedule</a></li>
           <li><a class="mobile-link" href="#committee">Team</a></li>
           <li><a class="mobile-link" href="#faq">FAQ</a></li>
-          <li class="pt-4"><a class="btn-neon-fill px-8 py-3 inline-block" href="#register">Register Now</a></li>
+          <li class="pt-4"><a class="btn-neon-fill px-8 py-3 inline-block" data-action="open-registration" href="#register">Register Now</a></li>
         </ul>
       </div>
     </div>
@@ -196,7 +177,7 @@
           </div>
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <a href="#register" class="btn-neon-fill btn-hero-cta px-10 py-5 text-base">Register Now →</a>
+            <a href="#register" data-action="open-registration" class="btn-neon-fill btn-hero-cta px-10 py-5 text-base">Register Now →</a>
             <a href="#events" class="btn-neon-outline px-10 py-5 text-base">Explore Tracks</a>
           </div>
         </div>
@@ -1211,7 +1192,7 @@
           Registrations are open. Pick your tier. Pick your events. Cross the threshold.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <a href="#" class="btn-neon-fill px-10 py-4 text-base">Register Now →</a>
+          <a href="#register" data-action="open-registration" class="btn-neon-fill px-10 py-4 text-base">Register Now →</a>
           <a href="#" class="btn-neon-outline px-10 py-4 text-base">Download Brochure</a>
         </div>
         <p class="font-mono text-xs text-txt-2 uppercase tracking-widest pt-6">
@@ -1291,6 +1272,125 @@
 
   <!-- Scripts: bundled non-module (works from file://) -->
   <script src="js/app-copy.js"></script>
+  <script src="js/registration.js"></script>
+
+  <!-- ============== REGISTRATION MODAL ============== -->
+  <dialog id="reg-modal" class="reg-modal" aria-labelledby="reg-modal-title">
+    <div class="reg-modal-card">
+      <span class="reg-corner tl" aria-hidden="true"></span>
+      <span class="reg-corner tr" aria-hidden="true"></span>
+      <span class="reg-corner bl" aria-hidden="true"></span>
+      <span class="reg-corner br" aria-hidden="true"></span>
+
+      <button type="button" class="reg-close" aria-label="Close registration form">×</button>
+
+      <h2 id="reg-modal-title">Register for TOMORROW<span class="text-neon-cyan">.EXE</span></h2>
+      <p class="reg-sub">// IEEE Ignite Week 2026 — Hackathon Track</p>
+
+      <form id="reg-form" novalidate>
+        <input type="hidden" name="eventType" value="hackathon">
+
+        <!-- ============== PERSONAL ============== -->
+        <fieldset>
+          <legend>// 01 — Personal</legend>
+          <div class="reg-grid">
+            <div class="reg-field reg-span-2">
+              <label class="reg-label" for="reg-fullName">Full Name <span class="req">*</span></label>
+              <input type="text" id="reg-fullName" name="fullName" autocomplete="name" required minlength="2" />
+              <span class="reg-error-msg" data-error-for="fullName" hidden></span>
+            </div>
+
+            <div class="reg-field">
+              <label class="reg-label" for="reg-email">UPES Email <span class="req">*</span></label>
+              <input type="email" id="reg-email" name="email" autocomplete="email" required placeholder="name@stu.upes.ac.in" />
+              <span class="reg-error-msg" data-error-for="email" hidden></span>
+            </div>
+
+            <div class="reg-field">
+              <label class="reg-label" for="reg-mobile">Mobile <span class="req">*</span></label>
+              <input type="tel" id="reg-mobile" name="mobile" autocomplete="tel" inputmode="numeric" required pattern="[6-9][0-9]{9}" maxlength="10" placeholder="9876543210" />
+              <span class="reg-error-msg" data-error-for="mobile" hidden></span>
+            </div>
+
+            <div class="reg-field reg-span-2">
+              <label class="reg-label" for="reg-department">School / Course / Branch / Specialization <span class="req">*</span></label>
+              <input type="text" id="reg-department" name="department" required placeholder="Eg.: SoCS / B.Tech CSE / AIML" />
+              <span class="reg-hint">Format: <code>School / Course / Branch / Specialization</code></span>
+              <span class="reg-error-msg" data-error-for="department" hidden></span>
+            </div>
+
+            <div class="reg-field reg-span-2">
+              <label class="reg-label" for="reg-year">Year of Study <span class="req">*</span></label>
+              <select id="reg-year" name="year" required>
+                <option value="" disabled selected>— select year —</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year">5th Year</option>
+              </select>
+              <span class="reg-error-msg" data-error-for="year" hidden></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============== PAYMENT ============== -->
+        <fieldset>
+          <legend>// 02 — Payment</legend>
+          <div class="reg-grid">
+            <div class="reg-field reg-span-2">
+              <label class="reg-label" for="reg-txnId">Transaction ID / UTR <span class="req">*</span></label>
+              <input type="text" id="reg-txnId" name="txnId" required minlength="6" placeholder="e.g. 409812345678" />
+              <span class="reg-error-msg" data-error-for="txnId" hidden></span>
+            </div>
+
+            <div class="reg-field reg-span-2">
+              <label class="reg-label">Payment Screenshot <span class="req">*</span></label>
+              <div class="reg-dropzone" id="reg-dropzone">
+                <div class="reg-dropzone-preview" id="reg-dropzone-preview"><span>IMG</span></div>
+                <div class="reg-dropzone-meta">
+                  <div class="reg-dropzone-name" id="reg-dropzone-name">No file chosen</div>
+                  <div class="reg-dropzone-size" id="reg-dropzone-size"></div>
+                  <span class="reg-dropzone-cta">Click to upload (JPG / PNG / WEBP · max 10 MB)</span>
+                </div>
+                <input type="file" id="screenshotFile" name="screenshotFile" accept="image/*" capture="environment" required />
+              </div>
+              <span class="reg-error-msg" data-error-for="screenshotFile" hidden></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============== DECLARATION ============== -->
+        <label class="reg-check">
+          <input type="checkbox" name="declaration" required />
+          <span>I agree to the <a href="#rules" onclick="return false;">event rules</a> and <a href="#coc" onclick="return false;">code of conduct</a>.<span class="req">*</span></span>
+        </label>
+        <span class="reg-error-msg" data-error-for="declaration" hidden style="display:block;margin:-0.5rem 0 0.75rem;"></span>
+
+        <div class="reg-form-error" hidden>
+          <span class="reg-form-error-msg">Something went wrong.</span>
+          <button type="button" class="reg-retry">Retry</button>
+        </div>
+
+        <button type="submit" class="btn-neon-fill reg-submit">Submit Registration →</button>
+      </form>
+
+      <!-- ============== SUCCESS VIEW ============== -->
+      <div class="reg-success" id="reg-success-view" hidden>
+        <div class="reg-checkmark" aria-hidden="true">✓</div>
+        <h3>Registration Confirmed</h3>
+        <p>You're officially on the roster. See you at the hackathon.</p>
+        <p class="reg-recap" id="reg-success-recap"></p>
+        <p>Join the WhatsApp group for live updates and team coordination:</p>
+        <div class="reg-success-actions">
+          <a id="reg-whatsapp-link" class="reg-wa-link" target="_blank" rel="noopener noreferrer" href="#">
+            Open WhatsApp Group →
+          </a>
+          <button type="button" class="reg-success-close">Close</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
 </body>
 
 </html>

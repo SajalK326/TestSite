@@ -1,0 +1,541 @@
+/* =========================================================================
+   REGISTRATION MODAL — Neon-Noir
+   Scoped to .reg-modal. Reuses :root tokens from style-copy.css.
+   ========================================================================= */
+
+.reg-modal {
+  --reg-input-bg:   rgba(11, 10, 10, 0.7);
+  --reg-error:      #ff5577;
+  --reg-success:    #5CFFB0;
+  --reg-radius:     6px;
+
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: var(--txt-0);
+  max-width: min(720px, 100%);
+  width: 100%;
+  max-height: 100dvh;
+  overflow: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.reg-modal::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Backdrop — dark blur to match the rest of the site */
+.reg-modal::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Main modal container card */
+.reg-modal-card {
+  position: relative;
+  background: var(--bg-1);
+  border: 1px solid var(--border-cy);
+  border-radius: 12px;
+  box-shadow: var(--glow-cy), 0 30px 80px rgba(0, 0, 0, 0.7);
+  padding: 2.25rem 1.75rem 1.75rem;
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  animation: reg-modal-in 0.28s cubic-bezier(.2, .9, .25, 1.05);
+
+  /* Themed scrollbar for Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-cyan) rgba(11, 10, 10, 0.8);
+}
+
+/* Custom themed scrollbar for Chrome, Edge, Safari */
+.reg-modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reg-modal-card::-webkit-scrollbar-track {
+  background: rgba(11, 10, 10, 0.6);
+  border-radius: 0 12px 12px 0;
+}
+
+.reg-modal-card::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(255, 90, 31, 0.5);
+}
+
+.reg-modal-card::-webkit-scrollbar-thumb:hover {
+  background: #ff7744;
+  box-shadow: 0 0 10px rgba(255, 90, 31, 0.8);
+}
+
+@keyframes reg-modal-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* HUD corner brackets removed */
+.reg-corner {
+  display: none;
+}
+
+/* Close button */
+.reg-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.85rem;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 1px solid var(--border-cy);
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.reg-close:hover {
+  color: var(--bg-0);
+  background: var(--neon-cyan);
+  box-shadow: var(--glow-cy);
+}
+
+/* Title */
+.reg-modal h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem;
+  line-height: 1.1;
+  color: var(--txt-0);
+}
+.reg-modal .reg-sub {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin: 0 0 1.5rem;
+}
+
+/* Fieldsets */
+.reg-modal fieldset {
+  border: 1px solid rgba(255, 90, 31, 0.25);
+  border-radius: 8px;
+  padding: 1.1rem 1.1rem 1.25rem;
+  margin: 0 0 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.reg-modal fieldset:last-of-type {
+  margin-bottom: 0.5rem;
+}
+.reg-modal legend {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  padding: 0 0.5rem;
+  background: var(--bg-1);
+  border-radius: 4px;
+}
+
+/* Form grid: 1 col on mobile, 2 col on wider */
+.reg-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+@media (min-width: 640px) {
+  .reg-grid { grid-template-columns: 1fr 1fr; }
+  .reg-grid .reg-span-2 { grid-column: 1 / -1; }
+}
+
+/* Field wrapper */
+.reg-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.reg-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--txt-1);
+}
+.reg-label .req { color: var(--neon-cyan); margin-left: 2px; }
+
+/* Inputs & selects — 16px font prevents iOS zoom on focus */
+.reg-modal input[type="text"],
+.reg-modal input[type="email"],
+.reg-modal input[type="tel"],
+.reg-modal select,
+.reg-modal textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--txt-0);
+  background: var(--reg-input-bg);
+  border: 1px solid var(--border-cy);
+  border-radius: var(--reg-radius);
+  padding: 0.7rem 0.85rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.reg-modal select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--neon-cyan) 50%),
+                    linear-gradient(135deg, var(--neon-cyan) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+.reg-modal input:focus,
+.reg-modal select:focus,
+.reg-modal textarea:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 1px var(--neon-cyan), 0 0 16px rgba(255, 90, 31, 0.35);
+  background: rgba(11, 10, 10, 0.9);
+}
+.reg-modal input::placeholder,
+.reg-modal textarea::placeholder { color: var(--txt-2); }
+
+/* Error state for fields */
+.reg-modal .reg-input-error {
+  border-color: var(--reg-error) !important;
+  box-shadow: 0 0 0 1px var(--reg-error), 0 0 12px rgba(255, 85, 119, 0.3) !important;
+}
+.reg-error-msg {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--reg-error);
+  margin-top: 0.15rem;
+}
+.reg-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--txt-2);
+  letter-spacing: 0.04em;
+}
+
+/* File dropzone (visually replaces the raw <input type=file>) */
+.reg-dropzone {
+  position: relative;
+  border: 1px solid rgba(255, 90, 31, 0.25);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.9rem;
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  border-radius: 8px;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.reg-dropzone:hover { border-color: var(--neon-cyan); background: rgba(255, 90, 31, 0.04); }
+.reg-dropzone .reg-dropzone-preview {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  background: var(--bg-2);
+  border: 1px solid var(--border-cy);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--txt-2);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-align: center;
+}
+.reg-dropzone .reg-dropzone-preview img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.reg-dropzone .reg-dropzone-meta { flex: 1; min-width: 0; }
+.reg-dropzone .reg-dropzone-name {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--txt-0);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.reg-dropzone .reg-dropzone-size {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--txt-1);
+  margin-top: 2px;
+}
+.reg-dropzone .reg-dropzone-cta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin-top: 6px;
+  display: inline-block;
+  cursor: pointer;
+}
+.reg-dropzone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Team member block (one per non-leader member) */
+.reg-member {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-cy);
+  border-radius: var(--reg-radius);
+  padding: 0.7rem 0.85rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+}
+.reg-member + .reg-member { margin-top: 0.6rem; }
+.reg-member-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+}
+.reg-member .reg-grid { gap: 0.6rem; }
+
+/* Declaration checkbox */
+.reg-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--txt-1);
+  margin: 0.5rem 0 1rem;
+  cursor: pointer;
+}
+.reg-check input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background: var(--reg-input-bg);
+  border: 1px solid var(--neon-cyan);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.18s ease;
+}
+.reg-check input[type="checkbox"]:checked {
+  background: var(--neon-cyan);
+  box-shadow: var(--glow-cy);
+}
+.reg-check input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px; top: 1px;
+  width: 6px; height: 11px;
+  border: solid var(--bg-0);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.reg-check a { color: var(--neon-cyan); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Inline form-level error banner */
+.reg-form-error {
+  background: rgba(255, 85, 119, 0.08);
+  border: 1px solid var(--reg-error);
+  border-left-width: 3px;
+  color: var(--reg-error);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 0.9rem;
+  margin: 0.5rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.reg-form-error[hidden] { display: none; }
+.reg-form-error .reg-retry {
+  background: transparent;
+  border: 1px solid var(--reg-error);
+  color: var(--reg-error);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.reg-form-error .reg-retry:hover {
+  background: var(--reg-error);
+  color: var(--bg-0);
+}
+
+/* Submit button — reuses .btn-neon-fill from style-copy.css */
+.reg-submit {
+  width: 100%;
+  font-size: 0.95rem;
+  padding: 0.95rem 1.5rem;
+  margin-top: 0.25rem;
+  border-radius: 6px;
+  clip-path: none;
+}
+.reg-submit[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  animation: none !important;
+}
+.reg-submit .reg-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: reg-spin 0.7s linear infinite;
+  vertical-align: -1px;
+}
+@keyframes reg-spin { to { transform: rotate(360deg); } }
+
+/* =========================== SUCCESS VIEW =========================== */
+.reg-success {
+  text-align: center;
+  padding: 1rem 0.5rem 0.5rem;
+}
+.reg-success[hidden] { display: none; }
+.reg-success .reg-checkmark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border: 2px solid var(--reg-success);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--reg-success);
+  font-size: 32px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  box-shadow: 0 0 24px rgba(92, 255, 176, 0.35);
+  animation: reg-check-in 0.45s cubic-bezier(.2, .9, .25, 1.05);
+}
+@keyframes reg-check-in {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.08); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.reg-success h3 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: var(--txt-0);
+}
+.reg-success p {
+  font-family: var(--font-body);
+  color: var(--txt-1);
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+}
+.reg-success .reg-recap {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--txt-2);
+  margin: 0.5rem 0 1.25rem;
+  word-break: break-word;
+}
+.reg-success .reg-success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.reg-success .reg-wa-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.5rem;
+  text-decoration: none;
+  background: var(--neon-cyan);
+  color: var(--bg-0);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--glow-cy);
+  clip-path: none;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+.reg-success .reg-wa-link:hover {
+  background: var(--neon-magenta);
+  box-shadow: var(--glow-mg);
+  transform: translate(-1px, -1px);
+}
+.reg-success .reg-success-close {
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  clip-path: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.reg-success .reg-success-close:hover {
+  background: var(--neon-cyan);
+  color: var(--bg-0);
+}
+
+/* Lock body scroll when modal is open */
+body.reg-modal-open { overflow: hidden; }
+
+/* Smaller padding on very narrow viewports */
+@media (max-width: 480px) {
+  .reg-modal-card { padding: 1.75rem 1rem 1.25rem; }
+  .reg-modal fieldset { padding: 0.85rem 0.8rem 1rem; }
+}
+
+/* iOS safe area for full-bleed close button etc. */
+@supports (padding: env(safe-area-inset-top)) {
+  .reg-modal-card {
+    padding-top:    max(2.25rem, env(safe-area-inset-top) + 1rem);
+  }
+}
